@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }))
 
 /** Démarrage de l'API */
 
-app.listen(11000, () => {
+app.listen(process.env.API_PORT, () => {
     console.log("Oh wonderfull your API is ready...")
 })
 
