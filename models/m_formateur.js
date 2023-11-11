@@ -3,17 +3,13 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../db.config')
 
-/**Modèle Elève */
+/**Modèle Formateur */
 module.exports = (sequelize) => {
-    const Eleve = sequelize.define('Eleve', {
+    const Formateur = sequelize.define('Formateur', {
         id: {
             type: DataTypes.INTEGER(10),
             primaryKey: true,
             autoIncrement: true
-        },
-        id_formation: {
-            type: DataTypes.INTEGER(10),
-            allowNull: false
         },
         nom: {
             type: DataTypes.STRING(100),
@@ -38,5 +34,5 @@ module.exports = (sequelize) => {
 
     })
 
-    return Eleve
+    return Formateur
 }
