@@ -27,7 +27,12 @@ db.Formation.hasMany(db.Eleve, { foreignKey: 'id_formation' })
 db.Eleve.belongsTo(db.Formation, { foreignKey: 'id_formation' })
 
 /**Synchronisation des modèles */
-db.sequelize.sync({ alter: true })  /**tu synchronises (crée les tables et les modifie) et tu as les droit de modifier les clés */
+
+/**db.sequelize.sync({ alter: true }) */  
+
+
+//après avoir réalisé les tables et connecté ses models mettre en commentaire ligne du dessus
+//tu synchronises (crée les tables et les modifie) et tu as les droit de modifier les clés 
 
 
 module.exports = db
