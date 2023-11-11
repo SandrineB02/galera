@@ -21,7 +21,26 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 /** Routers */
+/*** Import routers modules */
+const auth_router = require('./routers/r_auth')
+const eleve_router = require('./routers/r_eleve')
+const formateur_router = require('./routers/r_formateur')
+const formation_router = require('./routers/r_formation')
+const module_router = require('./routers/r_module')
+const note_router = require('./routers/r_note')
 
+/*** Main router parameters */
+
+app.get('/', (req, res) => res.send(`I'm online. All is OK !`))
+
+app.use('/auth', auth_router)
+app.use('/eleve', eleve_router)
+app.use('/formateur', formateur_router)
+app.use('/formation', formation_router)
+app.use('/module', module_router)
+app.use('/note', note_router)
+
+app.get('*', (req, res) => res.status(501).send('What the hell are you doing !?!'))
 
 /** Démarrage de l'API */
 mongoose

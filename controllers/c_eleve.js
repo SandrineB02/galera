@@ -1,50 +1,39 @@
-const EleveUser = require("../models/m_eleve");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+/*** Import used modules */
+const express = require('express');
+const { DataTypes } = require('sequelize');
+const Eleve = require('../models/m_eleve');
+/*****************************************/
+/*** Unit route for Eleve resource */
 
-
-exports.signup = (req, res, next) => {
-    bcrypt
-        .hash(req.body.password, parseInt(process.env.BCRYPTSALT))
-        .then((hash) => {
-            const eleveUser = new EleveUser({
-                email: req.body.email,
-                password: hash,
-            })
-
-            eleveUser.save()
-                .then(() => res.status(200).json({ message: "élève créé" }))
-                .catch((error) => res.status(400).json({ error }))
-
-        })
-        .catch((error) => res.status(500).json({ error }))
+exports.getAllEleves = (req, res) => {
+    return res.json({ message: "All eleve" })
 }
 
-exports.login = (req, res, next) => {
-    EleveUser.findOne({ email: req.body.email })
-        .then((eleveUser) => {
-            if (!eleveUser) {
-                return res.status(400).json({ error: "Utilisateur non trouvé " });
-            }
+exports.getEleve = async (req, res) => {
+    let pid = parseInt(req.params.id)
 
-            bcrypt.compare(req.body.password, eleveUser.password)
-                .then((valid) => {
-                    if (!valid) {
-                        return res.status(400).json({ error: "Mot de passe incorrect!" })
-                    }
-                    res.status(200).json({
-                        userId: eleveUser.id,
-                        token: jwt.sign({ userId: eleveUser.id }, process.env.SECRET_KEY, {
-                            expiresIn: "1h",
-                        })
-                    })
-
-                })
-                .catch((error) => res.status(500).json({ error }));
-
-        })
-        .catch((error) => {
-            res.status(500).json({ error })
-        })
+    return res.json({ message: `One eleve id ${pid}` })
 }
 
+exports.addEleve = async (req, res) => {
+    try {
+        // Logique métier pour créer un nouvel élève avec les données de req.body
+        const nouvelEleve = await Eleve.create(req.body);
+
+        return res.status(201).json({ message: 'Eleve Created', eleve: nouvelEleve });
+    } catch (error) {
+        return res.status(500).json({ error: 'Error creating eleve', details: error.message });
+    }
+}
+
+exports.updateEleve = async (req, res) => {
+    let pid = parseInt(req.params.id)
+
+    return res.json({ message: `Eleve id:${pid} Updated`})
+}
+
+exports.deleteEleve =  (req, res) => {
+    let pid = parseInt(req.params.id)
+
+    return res.status(204).json({})
+}

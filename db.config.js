@@ -2,6 +2,7 @@
 
 const { Sequelize } = require('sequelize')
 
+
 /**Connexion à la base de données */
 
 let sequelize = new Sequelize(
@@ -28,7 +29,7 @@ db.Eleve.belongsTo(db.Formation, { foreignKey: 'id_formation' })
 
 /**Synchronisation des modèles */
 
-/**db.sequelize.sync({ alter: true }) */  
+/**db.sequelize.sync({ alter: true }) */
 
 
 //après avoir réalisé les tables et connecté ses models mettre en commentaire ligne du dessus
