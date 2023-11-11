@@ -1,6 +1,7 @@
 /** Les modules */
 const express = require('express')
 const cors = require('cors')
+const mongoose = require('mongoose')
 
 require('dotenv').config()
 
@@ -24,13 +25,20 @@ app.use(express.urlencoded({ extended: true }))
 
 
 /** Démarrage de l'API */
-DB.authenticate()
-    .then(() => console.log('MariaDB CNX OK'))
+mongoose
+    .connect(process.env.MONGODB_URL)
     .then(() => {
-        app.listen(process.env.API_PORT, () => {
-            console.log("Oh wonderfull your API is ready...")
-        })
+        console.log('MONGODB CNX OK')
+        DB.authenticate()
+            .then(() => console.log('MariaDB CNX OK'))
+            .then(() => {
+                app.listen(process.env.API_PORT, () => {
+                    console.log("Oh wonderfull your API is ready...")
+                })
+            })
+            .catch(e => console.log('Database Error', e))
     })
-    .catch(e => console.log('Database Error', e))
+    .catch(e => console.log('Database ERROR -MONGO', e))
+
 
 
