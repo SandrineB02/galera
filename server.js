@@ -3,7 +3,6 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 
-require('dotenv').config()
 
 /**Connexion de la base de données */
 
@@ -29,7 +28,7 @@ mongoose
     .connect(process.env.MONGODB_URL)
     .then(() => {
         console.log('MONGODB CNX OK')
-        DB.authenticate()
+        DB.sequelize.authenticate()
             .then(() => console.log('MariaDB CNX OK'))
             .then(() => {
                 app.listen(process.env.API_PORT, () => {

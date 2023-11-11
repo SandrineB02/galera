@@ -18,12 +18,12 @@ module.exports = (sequelize) => {
         },
         id_formation: {
             type: DataTypes.INTEGER(10),
-            defaultValue: '',
+            defaultValue: 0,
             allowNull: false
         },
         id_formateur: {
             type: DataTypes.INTEGER(10),
-            defaultValue: '',
+            defaultValue: 0,
             allowNull: false
         },
 
