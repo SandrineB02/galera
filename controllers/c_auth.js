@@ -38,10 +38,10 @@ exports.login = async (req, res) => {
 
     try {
         // Password check  
-        let test = await bcrypt.compare(password, 'HERE THE USER PASSWORD FROM BDD')
-        if (!test) {
-            return res.status(401).json({ message: 'Wrong password' })
-        }
+       // let test = await bcrypt.compare(password, 'HERE THE USER PASSWORD FROM BDD')
+       // if (!test) {
+       ///     return res.status(401).json({ message: 'Wrong password' })
+       // }
 
         // JWT generation
         const token = jwt.sign({

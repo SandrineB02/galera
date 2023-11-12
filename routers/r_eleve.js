@@ -7,12 +7,12 @@ const eleveCtrl = require("../controllers/c_eleve");
 let router = express.Router();
 
 
-
+const JwtCheck = require("../middleware/jwtCheck")
 
 /**Routage User */
 
-//router.post("/signup", GuardPassword, userCtrl.signup);
-//router.post("/login", userCtrl.login);
+//router.post("/signup", JwtCheck, eleveCtrl.signup);
+//router.post("/login", eleveCtrl.login);
 
 /************************************/
 /*** Routes for eleve resource */

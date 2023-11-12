@@ -3,6 +3,9 @@ const express = require('express');
 const { DataTypes } = require('sequelize');
 const Eleve = require('../models/m_eleve');
 /*****************************************/
+
+
+
 /*** Unit route for Eleve resource */
 
 exports.getAllEleves = (req, res) => {
@@ -17,6 +20,7 @@ exports.getEleve = async (req, res) => {
 
 exports.addEleve = async (req, res) => {
     try {
+        console.log('Request body:', req.body);
         // Logique métier pour créer un nouvel élève avec les données de req.body
         const nouvelEleve = await Eleve.create(req.body);
 
@@ -29,10 +33,10 @@ exports.addEleve = async (req, res) => {
 exports.updateEleve = async (req, res) => {
     let pid = parseInt(req.params.id)
 
-    return res.json({ message: `Eleve id:${pid} Updated`})
+    return res.json({ message: `Eleve id:${pid} Updated` })
 }
 
-exports.deleteEleve =  (req, res) => {
+exports.deleteEleve = (req, res) => {
     let pid = parseInt(req.params.id)
 
     return res.status(204).json({})

@@ -18,7 +18,15 @@ exports.getFormateur = async (req, res) => {
 }
 
 exports.addFormateur = async (req, res) => {
-    return res.json({ message: 'Formateur Created' })
+    try {
+        console.log('Request body:', req.body);
+        // Logique métier pour créer un nouvel élève avec les données de req.body
+        const nouveauFormateur = await Formateur.create(req.body);
+
+        return res.status(201).json({ message: 'Formateur Created' });
+    } catch (error) {
+        return res.status(500).json({ error: 'Error creating Formateur' });
+    }
 }
 
 exports.updateFormateur = async (req, res) => {
