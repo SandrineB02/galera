@@ -46,7 +46,7 @@ db.Note.belongsTo(db.Module, { foreignKey: 'module_id' });
 
 /**Synchronisation des modèles */
 
-db.sequelize.sync({ alter: true })
+/**db.sequelize.sync({ alter: true })*/
 
 
 //après avoir réalisé les tables et connecté ses models mettre en commentaire ligne du dessus
