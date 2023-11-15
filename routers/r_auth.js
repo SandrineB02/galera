@@ -17,8 +17,10 @@ router.use((req, res, next) => {
 
 /**********************************/
 /*** Routes for auth resource */
-
+// Route pour l'inscription
 router.post('/signup', authCtrl.signup)
+
+// Route pour la connexion
 router.post('/login', authCtrl.login)
 
 module.exports = router

@@ -1,26 +1,23 @@
 /*** Import used modules */
 const express = require("express");
 const formateurCtrl = require("../controllers/c_formateur");
-
+const JwtCheck = require("../middleware/jwtCheck")
 /*** Get Expresss's router */
 const router = express.Router();
 
 
 /**Routage User */
 
-//router.post("/signup", GuardPassword, userCtrl.signup);
-//router.post("/login", Guardlimiter, userCtrl.login);
 
 //router.post("/signup", formateurCtrl.signup);
-//router.post("/login", formateurCtrl.login);
+//router.post("/login", JwtCheck, formateurCtrl.login);
 
 /*** Routes for formateur resource */
 
-
+//router.post('/', formateurCtrl.addFormateurs)
 router.get('/', formateurCtrl.getAllFormateurs)
 router.get('/:id', formateurCtrl.getFormateur)
-router.put('', formateurCtrl.addFormateur)
-router.patch('/:id', formateurCtrl.updateFormateur)
+router.put('/:id', formateurCtrl.updateFormateur)
 router.delete('/:id', formateurCtrl.deleteFormateur)
 
 module.exports = router

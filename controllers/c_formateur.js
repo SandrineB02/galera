@@ -12,9 +12,9 @@ exports.getAllFormateurs = (req, res) => {
 }
 
 exports.getFormateur = async (req, res) => {
-    let pid = parseInt(req.params.id)
+    let formateurId = parseInt(req.params.id)
 
-    return res.json({ message: `One formateur id ${pid}` })
+    return res.json({ message: `One formateur id ${formateurId}` })
 }
 
 exports.addFormateur = async (req, res) => {
@@ -30,13 +30,13 @@ exports.addFormateur = async (req, res) => {
 }
 
 exports.updateFormateur = async (req, res) => {
-    let pid = parseInt(req.params.id)
+    let formateurId = parseInt(req.params.id)
 
-    return res.json({ message: `Formateur id:${pid} Updated` })
+    return res.json({ message: `Formateur id:${formateurId} Updated` })
 }
 
 exports.deleteFormateur = (req, res) => {
-    let pid = parseInt(req.params.id)
+    let formateurId = parseInt(req.params.id)
 
     return res.status(204).json({})
 }

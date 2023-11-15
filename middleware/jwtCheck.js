@@ -1,9 +1,9 @@
 /*************************/
-/*** Import used modules */
+/*** Import modules */
 const jwt = require('jsonwebtoken')
 
 /********************************/
-/*** Extract token from headers */
+/*** Extraction token from headers */
 const extractBearer = authorization => {
 
     if(typeof authorization !== 'string'){

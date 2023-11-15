@@ -46,11 +46,11 @@ db.Note.belongsTo(db.Module, { foreignKey: 'module_id' });
 
 /**Synchronisation des modèles */
 
-/**db.sequelize.sync({ alter: true })*/
+db.sequelize.sync({ alter: true })
 
 
 //après avoir réalisé les tables et connecté ses models mettre en commentaire ligne du dessus
-//tu synchronises (crée les tables et les modifie) et tu as les droit de modifier les clés 
+//il synchronise (crée les tables et les modifie) et il a le droit de modifier les clés 
 
 
 module.exports = db

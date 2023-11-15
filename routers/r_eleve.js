@@ -9,19 +9,19 @@ let router = express.Router();
 
 const JwtCheck = require("../middleware/jwtCheck")
 
-/**Routage User */
+/**Routage Eleve */
 
-//router.post("/signup", JwtCheck, eleveCtrl.signup);
-//router.post("/login", eleveCtrl.login);
+//router.post("/signup", eleveCtrl.signup);
+//router.post("/login", JwtCheck, eleveCtrl.login);
 
 /************************************/
 /*** Routes for eleve resource */
 
-router.post('/', eleveCtrl.addEleve);
-router.get('/', eleveCtrl.getAllEleves)
+//router.post('/', eleveCtrl.addEleve);
+router.get('/', eleveCtrl.getAllEleve)
+router.get('/', eleveCtrl.addEleve)
 router.get('/:id', eleveCtrl.getEleve)
-router.put('', eleveCtrl.addEleve)
-router.patch('/:id', eleveCtrl.updateEleve)
+router.put('/:id', eleveCtrl.updateEleve)
 router.delete('/:id', eleveCtrl.deleteEleve)
 
 module.exports = router;

@@ -20,13 +20,9 @@ router.use((req, res, next) => {
 /*** Routes for formation resource */
 
 router.get('/', formationCtrl.getAllFormations)
-
 router.get('/:id', formationCtrl.getFormation)
-
 router.put('', formationCtrl.addFormation)
-
 router.patch('/:id', formationCtrl.updateFormation)
-
 router.delete('/:id', formationCtrl.deleteFormation)
 
 module.exports = router
