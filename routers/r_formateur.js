@@ -16,6 +16,7 @@ const router = express.Router();
 
 //router.post('/', formateurCtrl.addFormateurs)
 router.get('/', formateurCtrl.getAllFormateurs)
+router.post('/formateur', JwtCheck, formateurCtrl.addFormateur)
 router.get('/:id', formateurCtrl.getFormateur)
 router.put('/:id', formateurCtrl.updateFormateur)
 router.delete('/:id', formateurCtrl.deleteFormateur)

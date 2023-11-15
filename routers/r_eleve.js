@@ -17,7 +17,7 @@ const JwtCheck = require("../middleware/jwtCheck")
 /************************************/
 /*** Routes for eleve resource */
 
-//router.post('/', eleveCtrl.addEleve);
+router.post('/', JwtCheck, eleveCtrl.addEleve);
 router.get('/', eleveCtrl.getAllEleve)
 router.get('/', eleveCtrl.addEleve)
 router.get('/:id', eleveCtrl.getEleve)

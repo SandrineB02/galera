@@ -21,7 +21,7 @@ router.use((req, res, next) => {
 
 router.get('/', formationCtrl.getAllFormations)
 router.get('/:id', formationCtrl.getFormation)
-router.put('', formationCtrl.addFormation)
+router.post('', formationCtrl.addFormation)
 router.patch('/:id', formationCtrl.updateFormation)
 router.delete('/:id', formationCtrl.deleteFormation)
 

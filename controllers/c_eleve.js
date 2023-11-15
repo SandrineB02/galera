@@ -22,22 +22,27 @@ exports.getAllEleve = async (req, res) => {
 exports.getEleve = async (req, res) => {
     let eleveId = parseInt(req.params.id)
     console.log(eleveId)
-
-
     return res.json({ message: `One eleve id ${eleveId}` })
 }
 
 
 exports.addEleve = async (req, res) => {
     try {
-        console.log('Request body:', req.body)
-        // Créer le nouvel élève dans la base de données
-        let nouvelEleve = await Eleve.create(req.body);
-        return res.status(201).json({ message: 'Élève créé avec succès', eleve: nouvelEleve });
+        const { nom, prenom, email, password } = req.body;
+        const nouvelEleve = await Eleve.create({
+            nom: nom,
+            prenom: prenom,
+            email: email,
+            password: password,
+           
+        });
 
+        return res.status(201).json({ message: 'Élève créé avec succès', eleve: nouvelEleve });
     } catch (error) {
-        return res.status(500).json({ error: 'Error creating eleve', details: error.message });
+        
+        return res.status(500).json({ error: 'Erreur lors de la création de l\'élève', details: error.message });
     }
+
 };
 
 

@@ -28,7 +28,7 @@ exports.updateNote = async (req, res) => {
 }
 
 exports.deleteNote =  (req, res) => {
-    let pid = parseInt(req.params.id)
+    let Note_id = parseInt(req.params.id)
 
     return res.status(204).json({})
 }
